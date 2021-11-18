@@ -7,11 +7,31 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron-forge start",
     "package": "electron-forge package",
-    "make": "electron-forge make"
+    "make": "electron-forge make",
+    "build-installer": "electron-builder"
+  },
+  "build": {
+    "appId": "cool-app",
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "icon": "./gifc.png",
+      "requestedExecutionLevel": "requireAdministrator"
+    },
+    "nsis": {
+      "installerIcon": "./gifc.png",
+      "uninstallerIcon": "./gifc.png",
+      "uninstallDisplayName": "German To Go | GIFC Learning",
+      "license": "license.txt",
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
   },
   "author": "YanSinCrud",
   "license": "ISC",
   "dependencies": {
+    "electron-builder": "^22.13.1",
     "electron-squirrel-startup": "^1.0.0"
   },
   "devDependencies": {
