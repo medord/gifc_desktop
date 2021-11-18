@@ -16,12 +16,12 @@
       "target": [
         "nsis"
       ],
-      "icon": "./gifc.png",
+      "icon": "./gifc.ico",
       "requestedExecutionLevel": "requireAdministrator"
     },
     "nsis": {
-      "installerIcon": "./gifc.png",
-      "uninstallerIcon": "./gifc.png",
+      "installerIcon": "./gifc.ico",
+      "uninstallerIcon": "./gifc.ico",
       "uninstallDisplayName": "German To Go | GIFC Learning",
       "license": "license.txt",
       "oneClick": false,
