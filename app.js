@@ -7,7 +7,7 @@ const url = require('url')
 
 const rosettaPath = 'https://api.go1.co/integration-li/launch/15327858/rosettastone?enrolmentId=50126473&jwt=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnbzEuYWNjZXNzIiwidmVyIjoidjEuMCIsImV4cCI6MTYzNzYxNjUxMiwic2lkIjoiYWEyYTk1MTM4YTU3M2M0YmQzMmQxNjcwNGI2MGM5MjZhM2ZmODg3Mjg3MWVlNWE0NTY0ZmMxNDBiMmUzYjAzZTc5M2FhNmQ5NmU2ZjZjNTQxYTc5NTkxZWZhN2Y0YWJmZjNlM2RkOTE0ZWFmOGEzMDkxMzc2OTFlOGNjZWM3NzciLCJvYmplY3QiOnsidHlwZSI6InVzZXIiLCJjb250ZW50Ijp7ImlkIjo4NDgwNTI0LCJpbnN0YW5jZSI6ImFjY291bnRzLmdvY2F0YWx5emUuY29tIiwicHJvZmlsZV9pZCI6ODQ4MDUyNCwibmFtZSI6Ikluc3RpdHV0IEdpZmMiLCJyb2xlcyI6W10sIm1haWwiOiIxQGdpZmMubXlnbzEuY29tIiwiYWNjb3VudHMiOlt7ImlkIjo4NDgwNTI1LCJpbnN0YW5jZSI6ImdpZmMubXlnbzEuY29tIiwicHJvZmlsZV9pZCI6ODQ4MDUyNSwibmFtZSI6Ikluc3RpdHV0IEdpZmMiLCJyb2xlcyI6WyJTdHVkZW50Il0sInBvcnRhbF9pZCI6MzYxNzIyNzR9XX19LCJ1c2VkQ3JlZHMiOjAsImlhdCI6MTYzNzAxMTcxMn0.RCsA_3TU-RJne-x1QQdfUnXS4k1DOXy7DccZM9_l-0Au_fWySDV-05W9OPWeLHE40rSxgPnUu4eL_OFvgLyhZ1i-XwuK0LyIDiAxUjhddR8DP4lgVLmFAsY6S1vEEYBwBy5cvR_QneYZ0vQStgemQNzG2a8wuFUTx-ywA7bM6G7p0uKIFnYit8aUh2uYOjnqPH9fP4nr_9IQ3S52phJra9P4VYW45LrrV5ppYZHj2Hawbkcq1748074EFSDlzeqn9YFZ9rFVAUKPo7pi54cZ2q-8PfnGuUwOOB4uAr-ksCu-ibtxKdRI8qJKJ7rG34tpj99EoZg5ROZ-u5zVVcnIdg'
 
-app.once('ready', async () => {
+const createWindow = async () => {
   var mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
@@ -18,7 +18,7 @@ app.once('ready', async () => {
     alwaysOnTop: true,
     minimizable: false,
     webPreferences: {
-      // devTools: false,
+      devTools: false,
       webviewTag: true,
       preload: true,
       menubar: false,
@@ -40,4 +40,11 @@ app.once('ready', async () => {
     mainWindow.webContents.executeJavaScript(code);
   });
 
+}
+
+app.on("ready", createWindow);
+app.on("activate", createWindow);
+
+app.on('window-all-closed', () => {
+  app.quit()
 })
